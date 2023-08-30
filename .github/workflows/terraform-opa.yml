@@ -29,5 +29,7 @@ jobs:
 
       - name: Run OPA Policy Checks
         run: |
-          conftest test -p opa .
+          #conftest test -p opa .
+          conftest test -p opa --input tfplan.binary
+
 
