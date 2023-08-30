@@ -25,8 +25,9 @@ jobs:
           terraform init
           terraform validate
           terraform plan --out tfplan.binary
-          terraform show -json tfplan.binary > tfplan.jsonls
-          #ls tfplan.json
+          terraform show -json tfplan.binary > tfplan.json
+          ls
+          
           
 
       - name: Run OPA Policy Checks
