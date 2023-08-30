@@ -35,3 +35,4 @@ jobs:
           #conftest test -p OPA/compute_policy.rego tfplan.binary
           #conftest test -p OPA/compute_policy.rego tfplan.json
           opa eval --format pretty --data OPA/compute_policy.rego --input tfplan.json 'data.main' > result.json
+          
