@@ -1,7 +1,7 @@
 variable "instance_name" {
   description = "Name of the instance"
   type        = string
-  default     = "pdf-inst"
+  default     = "example-instance"
 }
 
 variable "instance_type" {
@@ -16,7 +16,7 @@ variable "bucket_name" {
   default     = "example-bucket"
 }
 
-resource "google_compute_instance" "pdf_inst" {
+resource "google_compute_instance" "example-instance" {
   name         = var.instance_name
   machine_type = var.instance_type
 
