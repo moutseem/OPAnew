@@ -1,4 +1,3 @@
-
 name: Terraform + OPA Workflow
 
 on:
@@ -16,18 +15,21 @@ jobs:
 
       - name: Install OPA
         run: |
-          wget https://github.com/open-policy-agent/conftest/releases/download/v0.27.0/conftest_0.27.0_Linux_x86_64.tar.gz
-          tar xzf conftest_0.27.0_Linux_x86_64.tar.gz
-          mv conftest /usr/local/bin
+         curl -L -o opa https://openpolicyagent.org/downloads/v0.46.1/opa_linux_amd64_static
+         chmod 755 ./opa
+         sudo cp opa /usr/local/bin
+         opa version
       - name: Run Terraform Commands
         run: |
           cd terraform
           terraform init
           terraform validate
-          #terraform plan --out tfplan.binary
-          #terraform show -json tfplan.binary > tfplan.json
+        #  terraform plan --out tfplan.binary
+        #  terraform show -json tfplan.binary > tfplan.json
+         # ls
+              
+
       - name: Run OPA Policy Checks
         run: |
-          #conftest test -p opa .
-          #conftest test -p opa --input tfplan.binary
-          conftest test -p OPA/compute_policy.rego terraform/main.tf
+          opa eval --format pretty --data OPA/compute_policy.rego --input terraform/tfplan.json 'data.main' > result.json
+          
