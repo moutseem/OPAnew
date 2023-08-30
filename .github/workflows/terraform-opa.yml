@@ -30,4 +30,4 @@ jobs:
         run: |
           #conftest test -p opa .
           #conftest test -p opa --input tfplan.binary
-          conftest test -p OPA terraform/main.tf
+          conftest test -p OPA/compute_policy.rego terraform/main.tf
