@@ -1,7 +1,7 @@
 variable "instance_name" {
   description = "Name of the instance"
   type        = string
-  default     = "example-instance"
+  default     = "pdf-inst"
 }
 
 variable "instance_type" {
