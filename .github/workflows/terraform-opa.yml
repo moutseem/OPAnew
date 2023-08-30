@@ -27,13 +27,9 @@ jobs:
           terraform plan --out tfplan.binary
           terraform show -json tfplan.binary > tfplan.json
           ls
-          
-          
+              
 
       - name: Run OPA Policy Checks
         run: |
-          #conftest test -p opa .
-          #conftest test -p OPA/compute_policy.rego tfplan.binary
-          #conftest test -p OPA/compute_policy.rego tfplan.json
           opa eval --format pretty --data OPA/compute_policy.rego --input tfplan.json 'data.main' > result.json
           
