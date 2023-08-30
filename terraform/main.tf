@@ -16,7 +16,7 @@ variable "bucket_name" {
   default     = "example-bucket"
 }
 
-resource "google_compute_instance" "example_instance1" {
+resource "google_compute_instance" "pdf_inst" {
   name         = var.instance_name
   machine_type = var.instance_type
 
